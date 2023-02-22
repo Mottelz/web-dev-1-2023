@@ -1,0 +1,15 @@
+{
+  "name": "lecture02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dadjoke.js",
+  "scripts": {
+    "start": "node dadjoke.js",
+    "test": "node encrypter.js"
+  },
+  "author": "Mottel Zirkind",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.3.3"
+  }
+}
