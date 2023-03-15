@@ -12,4 +12,12 @@ router.post('/game', (req, res) => {
     res.json({msg: 'You tried to create the following game.', game: { name, designer }})
 })
 
+router.get('/game', (req, res) => {
+    res.json({
+        "name": "Oath", 
+        "designer": "Cole Wherle", 
+        "playerCount": "3-5"
+    })
+})
+
 module.exports = router

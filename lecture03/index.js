@@ -1,15 +1,16 @@
 // imports
 require('dotenv').config()
 const express = require('express')
+const CORS = require('cors')
 const app = express()
 const port = process.env.PORT || 3000
+
 
 // middleware
 app.set('view engine', 'ejs') // use EJS to render
 app.set('views', './pages') // templates are in the pages folder
 app.use(express.json())
-
-
+app.use(CORS())
 
 
 // routers
@@ -17,6 +18,7 @@ const gamesRouter = require('./routes/games')
 const mainRouter = require('./routes/main')
 app.use('/', mainRouter)
 app.use('/games', gamesRouter)
+
 
 // 404 handler
 app.all('*', (req, res) => {
