@@ -1,8 +1,9 @@
 function getGame() {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = async function () {
-        console.log(this.response.name);
-        addGameToTable(this.response.name, this.response.designer, this.response.playerCount);
+        let game = JSON.parse(this.response);
+        console.log(game)
+        addGameToTable(game.name, game.designer, game.playerCount);
     };
     xhttp.open("GET", "http://localhost:3030/games/game");
     xhttp.send();
