@@ -16,8 +16,10 @@ app.use(CORS())
 // routers
 const gamesRouter = require('./routes/games')
 const mainRouter = require('./routes/main')
+const adminRouter = require('./routes/admin')
 app.use('/', mainRouter)
 app.use('/games', gamesRouter)
+app.use('/admin', adminRouter)
 
 
 // 404 handler

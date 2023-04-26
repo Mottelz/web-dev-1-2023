@@ -4,7 +4,7 @@
   "description": "An app to track where my board games are",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "author": "Mottel Zirkind",
   "license": "MIT",
