@@ -30,7 +30,7 @@ exports.searchGamesByName = async (query) => {
 
 // Add game 
 exports.addGame = async (gameData) => {
-    const statment = db.prepare("INSERT INTO games (Name, ID, Description, Awards, Link, MinPlayers, MaxPlayers, MinPlaytime, MaxPlaytime, MinAge, MaxAge) VALUES (@name, @id, @description, @awards, @link, @minPlayers, @maxPlayers, @minPlaytime, @maxPlaytime, @minAge, @maxAge);")
+    const statment = db.prepare("INSERT INTO games (Name, ID, Description, Link, MinPlayers, MaxPlayers, MinPlaytime, MaxPlaytime, MinAge) VALUES (@name, @id, @description, @link, @minPlayers, @maxPlayers, @minPlaytime, @maxPlaytime, @minAge);")
     await statment.run(gameData);
 }
 

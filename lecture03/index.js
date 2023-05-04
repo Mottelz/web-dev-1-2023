@@ -18,7 +18,7 @@ const gamesRouter = require('./routes/games')
 const mainRouter = require('./routes/main')
 const adminRouter = require('./routes/admin')
 app.use('/', mainRouter)
-app.use('/games', gamesRouter)
+app.use('', gamesRouter)
 app.use('/admin', adminRouter)
 
 
