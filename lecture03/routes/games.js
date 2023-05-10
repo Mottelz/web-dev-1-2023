@@ -4,19 +4,19 @@ const db = require('../models/database')
 
 router.get('/games', async (req, res) => {
     const games = await db.getGames()
-    res.json(games)
+    res.render('games-multi', {title: 'All Games', games})
 })
 
 router.get('/games/search', async (req, res) => {
     const query = req.query.q
     const results = await db.searchGamesByName(query)
-    res.json(results)
+    res.render('games-multi', {title: `Results for ${query}`, games: results})
 })
 
 router.get('/game/:id', async (req, res) => {
     const id = req.params.id
     const game = await db.getGameById(id)
-    res.json(game)
+    res.render('games-single', {title: game.Name, game})
 })
 
 router.delete('/game/:id', async (req, res) => {
@@ -38,25 +38,6 @@ router.post('/game', async (req, res) => {
         maxPlaytime: req.body.maxPlaytime ? req.body.maxPlaytime : null,
     }
     await db.addGame(newGame)
-    res.redirect('/games')
-})
-
-router.post('/games', async (req, res) => {
-    const games = req.body.games
-    games.forEach(async game => {
-        const newGame = {
-            id: game.id,
-            name: game.name,
-            minPlayers: game.minPlayers,
-            minAge: game.minAge,
-            description: game.description ? game.description : null,
-            link: game.link ? game.link : null,
-            maxPlayers: game.maxPlayers ? game.maxPlayers : null,
-            minPlaytime: game.minPlaytime ? game.minPlaytime : null,
-            maxPlaytime: game.maxPlaytime ? game.maxPlaytime : null,
-        }
-        await db.addGame(newGame) 
-    });
     res.redirect('/games')
 })
 

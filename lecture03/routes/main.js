@@ -9,4 +9,8 @@ router.get('/error', (req, res) => {
     throw new Error("WHAT ARE YOU DOING?!")
 })
 
+router.get('/test', (req, res) => {
+    res.render('games-multi', {title: 'Games!!!'})
+})
+
 module.exports = router

@@ -23,9 +23,9 @@ exports.getGameById = async (id) => {
 
 // Search games by names
 exports.searchGamesByName = async (query) => {
-    const statment = db.prepare("SELECT * FROM games WHERE name LIKE '%?%'")
-    const games = await statment.all(query)
-    return games
+    const statment = db.prepare("SELECT * FROM games")
+    const games = await statment.all()
+    return games.filter(game  => game.Name.toLowerCase().includes(query))
 }
 
 // Add game 
