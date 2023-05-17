@@ -1,0 +1,17 @@
+<% layout('./layout') %>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% it.games.forEach((game) => { %>
+            <tr onclick="window.location.href='/game/<%= game.ID %>'">
+                <td><%= game.Name %></td>
+                <td><%~ game.Description.substring(0, 250) %>...</td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

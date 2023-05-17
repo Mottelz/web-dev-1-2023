@@ -1,0 +1,11 @@
+<% layout('./layout') %>
+<div class="card">
+    <div class="card-header">
+        <%= it.game.Name %>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Time: <%= it.game.MinPlaytime%>-<%= it.game.MaxPlaytime%> | Players: <%= it.game.MinPlayers %>-<%= it.game.MaxPlayers %> | Age: <%= it.game.MinAge %>+</h5>
+        <p class="card-text"><%~ it.game.Description %></p>
+        <a target="_blank" href="<%~ it.game.Link %>" class="btn btn-primary">BGG Link</a>
+    </div>
+</div>

@@ -6,13 +6,22 @@
   "scripts": {
     "dev": "nodemon index.js"
   },
+  "nodemonConfig": {
+    "ext": "js,eta,json",
+    "watch": [
+      "index.js",
+      "routes/**",
+      "models/**",
+      "pages/**"
+    ]
+  },
   "author": "Mottel Zirkind",
   "license": "MIT",
   "dependencies": {
     "better-sqlite3": "^8.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
-    "ejs": "^3.1.8",
+    "eta": "^2.2.0",
     "express": "^4.18.2",
     "nodemon": "^2.0.20"
   }

@@ -2,13 +2,17 @@
 require('dotenv').config()
 const express = require('express')
 const CORS = require('cors')
+const eta = require('eta')
 const app = express()
 const port = process.env.PORT || 3000
 
 
 // middleware
-app.set('view engine', 'ejs') // use EJS to render
-app.set('views', './pages') // templates are in the pages folder
+app.engine("eta", eta.renderFile)
+eta.configure({ views: './pages', cache: true })
+app.set('view cache', true)
+app.set('view engine', 'eta')
+app.set('views', './pages') 
 app.use(express.json())
 app.use(CORS())
 app.use('/public', express.static('static'))
