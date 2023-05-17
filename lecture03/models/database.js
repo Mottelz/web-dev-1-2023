@@ -10,32 +10,53 @@ exports.initDB = async () => {
 // Get all games
 exports.getGames = async () => {
     const statment = db.prepare("SELECT * FROM games")
-    const games = await statment.all()
-    return games
+    try {
+        const games = await statment.all()
+        return games
+    } catch(err) {
+        console.err(err.message, err.stack)
+    }
 }
 
 // Get game by id
 exports.getGameById = async (id) => {
     const statment = db.prepare("SELECT * FROM games WHERE id = ?")
-    const game = await statment.get(id)
-    return game
+    try {
+        const game = await statment.get(id)
+        return game
+    } catch(err) {
+        console.err(err.message, err.stack)
+    }
 }
 
 // Search games by names
 exports.searchGamesByName = async (query) => {
     const statment = db.prepare("SELECT * FROM games")
-    const games = await statment.all()
-    return games.filter(game  => game.Name.toLowerCase().includes(query))
+    try {
+        const games = await statment.all()
+        const q = query.toLowerCase()
+        return games.filter(game  => game.Name.toLowerCase().includes(q))
+    } catch(err) {
+        console.err(err.message, err.stack)
+    }
 }
 
 // Add game 
 exports.addGame = async (gameData) => {
     const statment = db.prepare("INSERT INTO games (Name, ID, Description, Link, MinPlayers, MaxPlayers, MinPlaytime, MaxPlaytime, MinAge) VALUES (@name, @id, @description, @link, @minPlayers, @maxPlayers, @minPlaytime, @maxPlaytime, @minAge);")
-    await statment.run(gameData);
+    try {
+        await statment.run(gameData);
+    } catch(err) {
+        console.err(err.message, err.stack)
+    }
 }
 
 // Remove game
 exports.deleteGameById = async (id) => {
     const statment = db.prepare("DELETE FROM games WHERE id = ?")
-    await statment.run(id)
+    try {
+        await statment.run(id)
+    } catch(err) {
+        console.err(err.message, err.stack)
+    }
 }

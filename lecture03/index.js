@@ -11,6 +11,7 @@ app.set('view engine', 'ejs') // use EJS to render
 app.set('views', './pages') // templates are in the pages folder
 app.use(express.json())
 app.use(CORS())
+app.use('/public', express.static('static'))
 
 
 // routers
