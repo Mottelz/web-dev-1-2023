@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../models/database')
 
 router.get('/', (req, res) => {
-    res.render('index', {title: 'home', body: 'Welcome to Gamey it\'s a work in progress.'})
+    res.render('index', {title: 'Home', body: 'Welcome to Gamey it\'s a work in progress.'})
 })
 
 router.get('/error', async (req, res) => {
