@@ -1,3 +1,8 @@
 <% layout('./layout') %>
-<h1><%= it.title %></h1>
-<p><%= it.body %></p>
+<div class="d-flex justify-content-center">
+    <div class="d-flex align-items-center justify-content-center flex-column vh-100">
+        <p class="display-1 fw-bold"><%= it.title %></p>
+        <p class="fs-4"><%= it.body %></p>
+        <a href="/games" class="btn btn-outline-primary btn-large">Browse Games</a>
+    </div>
+</div>

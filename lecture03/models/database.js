@@ -14,7 +14,7 @@ exports.getGames = async () => {
         const games = await statment.all()
         return games
     } catch(err) {
-        console.err(err.message, err.stack)
+        console.error(err.message, err.stack)
     }
 }
 
@@ -25,7 +25,7 @@ exports.getGameById = async (id) => {
         const game = await statment.get(id)
         return game
     } catch(err) {
-        console.err(err.message, err.stack)
+        console.error(err.message, err.stack)
     }
 }
 
@@ -37,7 +37,7 @@ exports.searchGamesByName = async (query) => {
         const q = query.toLowerCase()
         return games.filter(game  => game.Name.toLowerCase().includes(q))
     } catch(err) {
-        console.err(err.message, err.stack)
+        console.error(err.message, err.stack)
     }
 }
 
@@ -47,7 +47,7 @@ exports.addGame = async (gameData) => {
     try {
         await statment.run(gameData);
     } catch(err) {
-        console.err(err.message, err.stack)
+        console.error(err.message, err.stack)
     }
 }
 
@@ -57,6 +57,18 @@ exports.deleteGameById = async (id) => {
     try {
         await statment.run(id)
     } catch(err) {
-        console.err(err.message, err.stack)
+        console.error(err.message, err.stack)
+    }
+}
+
+
+// Get count of games
+exports.getNumberOfGames = async () => {
+    const statment = db.prepare("SELECT COUNT(*) as count FROM games")
+    try {
+        const count = await statment.get()['count']
+        return count
+    } catch (err) {
+        console.error(err.message, err.stack)
     }
 }
