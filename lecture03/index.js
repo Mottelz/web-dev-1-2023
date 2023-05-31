@@ -2,6 +2,7 @@
 require('dotenv').config()
 const express = require('express')
 const CORS = require('cors')
+const bodyParser = require('body-parser')
 const eta = require('eta')
 const app = express()
 const port = process.env.PORT || 3000
@@ -13,7 +14,8 @@ eta.configure({ views: './pages', cache: true })
 app.set('view cache', true)
 app.set('view engine', 'eta')
 app.set('views', './pages') 
-app.use(express.json())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(CORS())
 app.use('/public', express.static('static'))
 

@@ -1,0 +1,32 @@
+<% layout('./layout') %>
+<div class="card" style="margin-top: 1em">
+    <% if (it.game) { %>
+        <form action="/game/edit" method="post">
+    <% } else { %>
+        <form action="/game" method="post">
+    <% } %>
+        <input type="number" class="form-control" name="id" id="id" placeholder="Game ID" required <% if (it.game?.ID) { %> value="<%= it.game.ID%>" <%}%>>
+
+        <input type="text" class="form-control" name="name" id="name" placeholder="Game Name" required <% if (it.game?.Name) { %> value="<%= it.game.Name%>" <%}%>>
+
+        <input type="number" class="form-control" name="minPlayers" id="minPlayers" placeholder="Min # of Players" required <% if (it.game?.MinPlayers) { %> value="<%= it.game.MinPlayers%>" <%}%>>
+        
+        <input type="number" class="form-control" name="maxPlayers" id="maxPlayers" placeholder="Max # of Players" <% if (it.game?.MaxPlayers) { %> value="<%= it.game.MaxPlayers%>" <%}%>>
+        
+        <input type="number" class="form-control" name="minAge" id="minAge" placeholder="Min Player Age" <% if (it.game?.MinAge) { %> value="<%= it.game.MinAge%>" <%}%>>
+
+        <input type="number" class="form-control" name="maxAge" id="maxAge" placeholder="Max Player Age" <% if (it.game?.MaxAge) { %> value="<%= it.game.MaxAge%>" <%}%>>
+
+        <textarea class="form-control" name="description" id="description" cols="30" rows="10" placeholder="Enter game description. Preferably using HTML."><% if (it.game?.Description) { %><%~ it.game.Description%><%}%></textarea>
+
+        <input type="number" class="form-control" name="minPlaytime" id="minPlaytime" placeholder="Min Playtime" <% if (it.game?.MinPlaytime) { %> value="<%= it.game.MinPlaytime%>" <%}%>>
+
+        <input type="number" class="form-control" name="maxPlaytime" id="maxPlaytime" placeholder="Max Playtime" <% if (it.game?.MaxPlaytime) { %> value="<%= it.game.MaxPlaytime%>" <%}%>>
+
+        <% if (it.game) { %>
+            <input type="submit" value="Save Changes" class="btn btn-primary">
+        <% } else { %>
+            <input type="submit" value="Submit" class="btn btn-primary">
+        <% } %>
+    </form>
+</div>

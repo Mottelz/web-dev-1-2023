@@ -51,6 +51,15 @@ exports.addGame = async (gameData) => {
     }
 }
 
+exports.updateGame = async (gameData) => {
+    const statment = db.prepare("UPDATE games SET Name = @name, Description = @description, Link = @link, MinPlayers = @minPlayers, MaxPlayers = @maxPlayers, MinPlaytime = @minPlaytime, MaxPlaytime = @maxPlaytime, MinAge = @minAge WHERE ID = @id;")
+    try {
+        await statment.run(gameData);
+    } catch(err) {
+        console.error(err.message, err.stack)
+    }
+}
+
 // Remove game
 exports.deleteGameById = async (id) => {
     const statment = db.prepare("DELETE FROM games WHERE id = ?")
